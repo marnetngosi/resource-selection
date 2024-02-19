@@ -1,0 +1,27 @@
+#Trial 1 for removing fixes outside study area
+#code
+library ('sf')
+# Load necessary libraries
+library(sf)
+
+# Load GPS data from a CSV file
+gps_data <- read.csv("path/to/your/gps_data.csv")
+
+# Read the shapefile for the study area
+study_area <- st_read("path/to/your/shapefile.shp")
+
+# Convert GPS data to a spatial object using the same CRS as the shapefile
+# Ensure the column names in your CSV match 'lat' and 'lon' here, or adjust as needed
+gps_data_sf <- st_as_sf(gps_data, coords = c("lon", "lat"), crs = st_crs(study_area))
+
+# Filter GPS points to keep only those within the study area boundaries
+gps_inside_study_area <- gps_data_sf[st_within(gps_data_sf, study_area, sparse = FALSE), ]
+
+# If you want to work with the filtered data as a regular data frame later
+filtered_gps_data <- as.data.frame(gps_inside_study_area)
+
+# Optionally, save the filtered GPS data to a new CSV file
+write.csv(filtered_gps_data, "path/to/your/filtered_gps_data.csv", row.names = FALSE)
+
+# Print a message indicating completion
+cat("Filtered GPS data has been saved to filtered_gps_data.csv\n")
