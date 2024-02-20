@@ -2,7 +2,7 @@
 # Time-varying habitat selection analysis #
 ###########################################
 
-# Romain Dejeante ; Marion Valeix ; Simon Chamaillé-Jammes
+# Romain Dejeante ; Marion Valeix ; Simon Chamaillï¿½-Jammes
 
 # Appendix S1
 
