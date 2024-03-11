@@ -1,14 +1,21 @@
 # Overview
 This chapter uses movement data of 30 elephtants. It employs step selection functions (atm package) to determine elephants selection in relation to distance to water, slope, tree density and human clearings.
 
-## Repository Structure
+## Repository 
 Below is an outline of the repository's structure, detailing the purpose of each main directory:
 
-### Data-simulation
+### Data
 [Data](./data): This directory contains all raw and processed data files used in the analyses. (Note: only simulated data is included, raw data is not in the directory)
 
 - `/raw_data`: Original, unmodified data files.
 - `/processed_data`: Data files that have been cleaned or transformed and are ready for analysis.
+
+### Documents
+[Documents](./docs): Contains the detailed project documentation.
+
+- `project_overview.md`: Detailed project overview.
+- `methods_description.md`: Explanation of the methods used in the analyses.
+- `results_discussion.md`: Discussion of the results and their implications.
 
 ### R_scripts
 [Scripts](./R): Here you will find all the scripts used for data analysis.
@@ -22,13 +29,6 @@ Below is an outline of the repository's structure, detailing the purpose of each
 
 - `/figures`: Visual representations of the analytical findings.
 - `/tables`: Summarized data and statistical results in table formats.
-
-### Documents
-[Documents](./docs): Contains the detailed project documentation.
-
-- `project_overview.md`: Detailed project overview.
-- `methods_description.md`: Explanation of the methods used in the analyses.
-- `results_discussion.md`: Discussion of the results and their implications.
 
 =======
 # resource-selection
