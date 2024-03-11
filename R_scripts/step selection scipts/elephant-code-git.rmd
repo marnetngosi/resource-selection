@@ -1,0 +1,87 @@
+---
+title: "resource selection coding"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+#set working directory
+setwd("C:/Users/marne/OneDrive/Documents/Thesis  Data/telemetry_data/elephant_spatial_data")
+```
+knitr::opts_chunk$set(echo = TRUE)
+```{r load packages}
+library(sp)
+library(sf)
+library(proxy)
+library(raster)
+library(adehabitatHR) 
+library(amt)
+library(dplyr)
+library(lubridate)
+library(forcats) # for collapsing landcover categories
+library(ggmap)
+library(ggplot2)
+library(MuMIn)
+library(sjPlot)
+library(RWmisc)
+library(tibble)
+library(tidyr)
+library(purrr)
+library(broom)
+```
+```{r load data}
+elemove <- read.csv('2020collars_tracker_data.csv',header=T, sep=",")
+head(elemove)
+str(elemove)
+names(elemove)
+```
+```{r formatting data columns}
+elemove$date_time_gmt <- as.POSIXct(elemove$Time.Stamp, tz = 'GMT', format = '%Y-%m-%d %H:%M:%S') ### this is in GMT, not Malawi time
+elemove$date_time_lmt <- elemove$date_time_gmt # lmt = local mean time
+attr(elemove$date_time_lmt, "tzone") <- 'Africa/Blantyre' # Africa/Blantyre time zone is Central Africa Time or GMT+02
+
+# remove missed GPS fixes
+elemove <- elemove[!grepl("N", elemove$Latitude),]
+
+# convert lat lon to UTM
+elemove$Latitude <- gsub("``", '" ', elemove$Latitude)
+elemove$Latitude <- gsub("`", "' ", elemove$Latitude)
+elemove$Latitude <- trimws(elemove$Latitude, 'left')
+elemove$Longitude <- gsub("``", '" ', elemove$Longitude)
+elemove$Longitude <- gsub("`", "' ", elemove$Longitude)
+elemove$Longitude <- trimws(elemove$Longitude, 'left')
+
+decimal_degrees <- dms2dd(elemove$Longitude, elemove$Latitude)
+elemove <- cbind(elemove,decimal_degrees)
+#str(elemove)
+elemove <- st_as_sf(x = elemove, coords = c('lon', 'lat'), crs = 4326) # crs = coordinate reference system
+elemove <- st_transform(elemove, crs = 32736)
+
+elemove$x <- st_coordinates(elemove)[,1]
+elemove$y <- st_coordinates(elemove)[,2]
+#View(elemove)
+
+
+#To add removing of locations from study area```
+```{}
+
+```
+
+This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
+
+## Including Code
+
+You can include R code in the document as follows:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
