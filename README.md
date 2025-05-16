@@ -1,7 +1,7 @@
 # Resource Selection and Spatial Memory in Translocated Elephants
 
 ![License](https://img.shields.io/badge/license-MIT-green.svg)  
-This repository contains code, data structure, and documentation for analyzing resource selection and movement stabilization in translocated elephants using **integrated Step Selection Functions (iSSFs)**.
+This repository contains code, data structure, and documentation for analyzing resource selection in translocated elephants using **integrated Step Selection Functions (iSSFs)**.
 
 ## Overview
 
