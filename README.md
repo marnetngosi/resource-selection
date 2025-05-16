@@ -40,12 +40,13 @@ Key objectives:
 - **Covariates**:
   - Distance to fence, Distance to nearest water, Slope,Density of large trees, Canopy height and Basal Area
   - Time of day (day/night), season, and year
-    ## Data Availability
-Due to ethical and conservation concerns, the GPS collar data used in this study cannot be shared publicly. The repository includes all analysis scripts and instructions, and can be run with user-supplied data of similar format.
-
+    
 ## Dependencies
 
 To reproduce the analysis, install the following R packages:
 
 ```r
 install.packages(c("amt", "survival", "ggplot2", "dplyr", "sf", "raster", "terra", "lubridate"))
+
+## Data Availability
+Due to ethical and conservation concerns, the GPS collar data used in this study cannot be shared publicly. The repository includes all analysis scripts and instructions, and can be run with user-supplied data of similar format.
