@@ -10,8 +10,8 @@ This study explores habitat and landscape features that influence elephant movem
 Key objectives:
 - Quantify seasonal and diel resource selection patterns.
 
-## 📁 Repository Structure
-📦 project-root
+## Repository Structure
+ project-root
 ├── data/ # Cleaned GPS and annotated step data
 │ ├── cleaned_gps_data.csv
 │ └── environmental_covariates/ # Raster and shapefile inputs
@@ -40,6 +40,8 @@ Key objectives:
 - **Covariates**:
   - Distance to fence, Distance to nearest water, Slope,Density of large trees, Canopy height and Basal Area
   - Time of day (day/night), season, and year
+    ## Data Availability
+Due to ethical and conservation concerns, the GPS collar data used in this study cannot be shared publicly. The repository includes all analysis scripts and instructions, and can be run with user-supplied data of similar format.
 
 ## Dependencies
 
