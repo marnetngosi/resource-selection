@@ -48,5 +48,7 @@ To reproduce the analysis, install the following R packages:
 ```r
 install.packages(c("amt", "survival", "ggplot2", "dplyr", "sf", "raster", "terra", "lubridate"))
 
+
 ## Data Availability
 Due to ethical and conservation concerns, the GPS collar data used in this study cannot be shared publicly. The repository includes all analysis scripts and instructions, and can be run with user-supplied data of similar format.
+
