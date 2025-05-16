@@ -1,36 +1,49 @@
-# Overview
-This chapter uses movement data of 30 elephtants. It employs step selection functions (atm package) to determine elephants selection in relation to distance to water, slope, tree density and human clearings.
+# Resource Selection and Spatial Memory in Translocated Elephants
 
-## Repository 
-Below is an outline of the repository's structure, detailing the purpose of each main directory:
+![License](https://img.shields.io/badge/license-MIT-green.svg)  
+This repository contains code, data structure, and documentation for analyzing resource selection and movement stabilization in translocated elephants using **integrated Step Selection Functions (iSSFs)**.
 
-### Data
-This directory contains all raw and processed data files used in the analyses. (Note: only simulated data is included, raw data is not in the directory
+## Overview
 
-raw_data: Original, unmodified data files.
-processed_data: Data files that have been cleaned or transformed and are ready for analysis.
+This study explores habitat and landscape features that influence elephant movememnt decisions in a new landscape following translocation. Using GPS collar data and environmental covariates, we applied iSSFs to assess seasonal and diel resource selection.
 
-### Documents
-Documents: Contains the detailed project documentation.
+Key objectives:
+- Quantify seasonal and diel resource selection patterns.
 
-project_overview: Detailed project overview.
-methods_description: Explanation of the methods used in the analyses.
-results_discussion: Discussion of the results and their implications.
+## 📁 Repository Structure
+📦 project-root
+├── data/ # Cleaned GPS and annotated step data
+│ ├── cleaned_gps_data.csv
+│ └── environmental_covariates/ # Raster and shapefile inputs
+├── scripts/ # R scripts for preprocessing and modeling
+│ ├── 01_prepare_data.R
+│ ├── 02_fit_issf_models.R
+│ ├── 03_model_selection.R
+│ └── 04_plot_effects.R
+├── outputs/ # Model objects and figures
+│ ├── model_results/
+│ └── figures/
+├── docs/
+│ ├── ISSF_method_details.pdf
+│ └── references.bib
+└── README.md
 
-### R_scripts
-Scripts: Here you will find all the scripts used for data analysis.
 
-animal_movement_analysis.R: Analyzes animal movement patterns.
-ssf_updated_jan24.R: Evaluates resource selection by animals.
-conditional_logistic_regressio.R: Runs conditional logistic regression.
+## Methods
 
-### Results
-Results: Generated analysis outputs including figures and tables.
+- **Data source**: GPS collar data from translocated elephants (4–6 hr fix intervals).
+- **Step generation**: `amt::steps_by_burst()` used to create used/available steps.
+- **Distributions**:
+  - **Gamma** for step lengths
+  - **von Mises** for turning angles
+- **Modeling**: Conditional logistic regression using `survival::clogit()`.
+- **Covariates**:
+  - Distance to fence, Distance to nearest water, Slope,Density of large trees, Canopy height and Basal Area
+  - Time of day (day/night), season, and year
 
-figures: Visual representations of the analytical findings.
-tables: Summarized data and statistical results in table formats.
+## Dependencies
 
-=======
-# resource-selection
-thesis chapter summary: Resource selection using step selection functions
+To reproduce the analysis, install the following R packages:
 
+```r
+install.packages(c("amt", "survival", "ggplot2", "dplyr", "sf", "raster", "terra", "lubridate"))
